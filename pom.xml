@@ -13,12 +13,12 @@
     mybatis and jersey.
     </description>
 	<url>https://github.com/zzycjcg/foundation</url>
-	
+
 	<ciManagement>
 		<system>Travis CI</system>
 		<url>https://travis-ci.org/zzycjcg/foundation/</url>
 	</ciManagement>
-	
+
 	<licenses>
 		<license>
 			<name>The Apache Software License, Version 2.0</name>
@@ -49,6 +49,11 @@
 
 	<properties>
 		<java-version>1.7</java-version>
+		<java-doc-link-version>7</java-doc-link-version>
+		<maven-compiler-plugin-version>3.3</maven-compiler-plugin-version>
+		<maven-source-plugin-version>2.4</maven-source-plugin-version>
+		<maven-javadoc-plugin-version>2.10.3</maven-javadoc-plugin-version>
+		<maven-gpg-plugin-version>1.6</maven-gpg-plugin-version>
 		<mybatis-version>3.3.0</mybatis-version>
 		<mybatis-spring-version>1.2.2</mybatis-spring-version>
 		<spring-version>3.2.13.RELEASE</spring-version>
@@ -63,6 +68,7 @@
 		<junit-version>4.12</junit-version>
 		<aspectjweaver-version>1.8.6</aspectjweaver-version>
 		<bouncycastle-verson>1.52</bouncycastle-verson>
+		<default-encoding>UTF-8</default-encoding>
 	</properties>
 
 	<build>
@@ -70,11 +76,11 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.3</version>
+				<version>${maven-compiler-plugin-version}</version>
 				<configuration>
 					<source>${java-version}</source>
 					<target>${java-version}</target>
-					<encoding>UTF-8</encoding>
+					<encoding>${default-encoding}</encoding>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -216,7 +222,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-source-plugin</artifactId>
-						<version>2.4</version>
+						<version>${maven-source-plugin-version}</version>
 						<executions>
 							<execution>
 								<id>attach-sources</id>
@@ -232,7 +238,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>2.10.3</version>
+						<version>${maven-javadoc-plugin-version}</version>
 						<executions>
 							<execution>
 								<phase>package</phase>
@@ -242,16 +248,16 @@
 							</execution>
 						</executions>
 						<configuration>
-							<encoding>UTF-8</encoding>
+							<encoding>${default-encoding}</encoding>
 							<links>
-								<link>http://docs.oracle.com/javase/7/docs/api</link>
+								<link>http://docs.oracle.com/javase/${java-doc-link-version}/docs/api</link>
 							</links>
 						</configuration>
 					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
-						<version>1.6</version>
+						<version>%{maven-gpg-plugin-version}</version>
 						<executions>
 							<execution>
 								<phase>install</phase>
