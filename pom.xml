@@ -5,11 +5,46 @@
 
 	<groupId>com.github.zzycjcg</groupId>
 	<artifactId>foundation</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>0.0.1</version>
+
+	<name>foundation</name>
+	<description>
+    The foundation framework makes it easier to build Java web applications. Foundation is mainly based on spring, 
+    mybatis and jersey.
+    </description>
+	<url>https://github.com/zzycjcg/foundation</url>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+
+
+	<developers>
+		<developer>
+			<name>zhiyong zhu</name>
+			<email>zzycjcg@qq.com</email>
+			<timezone>+8</timezone>
+		</developer>
+	</developers>
+
+	<scm>
+		<url>https://github.com/zzycjcg/foundation</url>
+		<connection>scm:git:ssh://github.com/zzycjcg/foundation.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/zzycjcg/foundation.git</developerConnection>
+	</scm>
+
+	<distributionManagement>
+		<site>
+			<id>foundation</id>
+			<url>gitsite:git@github.com/zzycjcg/foundation.git</url>
+		</site>
+	</distributionManagement>
 
 	<properties>
-		<java-version>1.8</java-version>
-		<project-version>0.0.1-SNAPSHOT</project-version>
+		<java-version>1.7</java-version>
 		<mybatis-version>3.3.0</mybatis-version>
 		<mybatis-spring-version>1.2.2</mybatis-spring-version>
 		<spring-version>3.2.13.RELEASE</spring-version>
@@ -23,6 +58,7 @@
 		<commons-lang3-version>3.3.2</commons-lang3-version>
 		<junit-version>4.12</junit-version>
 		<aspectjweaver-version>1.8.6</aspectjweaver-version>
+		<bouncycastle-verson>1.52</bouncycastle-verson>
 	</properties>
 
 	<build>
@@ -153,9 +189,74 @@
 		<dependency>
 			<groupId>org.bouncycastle</groupId>
 			<artifactId>bcprov-jdk15on</artifactId>
-			<version>1.52</version>
+			<version>${bouncycastle-verson}</version>
 		</dependency>
 	</dependencies>
 
-
+	<profiles>
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<version>2.4</version>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar-no-fork</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<attach>true</attach>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>2.10.3</version>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<links>
+								<link>http://docs.oracle.com/javase/7/docs/api</link>
+							</links>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.6</version>
+						<executions>
+							<execution>
+								<phase>install</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<distributionManagement>
+				<snapshotRepository>
+					<id>oss</id>
+					<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+				</snapshotRepository>
+				<repository>
+					<id>oss</id>
+					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+				</repository>
+			</distributionManagement>
+		</profile>
+	</profiles>
 </project>
