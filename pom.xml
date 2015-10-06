@@ -13,14 +13,18 @@
     mybatis and jersey.
     </description>
 	<url>https://github.com/zzycjcg/foundation</url>
-
+	
+	<ciManagement>
+		<system>Travis CI</system>
+		<url>https://travis-ci.org/zzycjcg/foundation/</url>
+	</ciManagement>
+	
 	<licenses>
 		<license>
 			<name>The Apache Software License, Version 2.0</name>
 			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
 		</license>
 	</licenses>
-
 
 	<developers>
 		<developer>
@@ -74,6 +78,16 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<resources>
+			<resource>
+				<directory>${project.basedir}</directory>
+				<targetPath>META-INF</targetPath>
+				<includes>
+					<include>LICENSE</include>
+					<include>NOTICE</include>
+				</includes>
+			</resource>
+		</resources>
 	</build>
 
 	<dependencies>
@@ -193,6 +207,7 @@
 		</dependency>
 	</dependencies>
 
+
 	<profiles>
 		<profile>
 			<id>release</id>
@@ -227,6 +242,7 @@
 							</execution>
 						</executions>
 						<configuration>
+							<encoding>UTF-8</encoding>
 							<links>
 								<link>http://docs.oracle.com/javase/7/docs/api</link>
 							</links>

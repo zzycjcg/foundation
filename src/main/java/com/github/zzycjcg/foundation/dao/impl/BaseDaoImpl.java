@@ -6,6 +6,11 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.github.zzycjcg.foundation.dao.BaseDao;
 
+/**
+ * The Class BaseDaoImpl.
+ *
+ * @param <T> the generic type
+ */
 public class BaseDaoImpl<T> implements BaseDao<T>
 {
     

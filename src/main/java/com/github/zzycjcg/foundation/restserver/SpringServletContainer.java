@@ -9,11 +9,19 @@ import org.glassfish.jersey.servlet.ServletContainer;
 import org.glassfish.jersey.servlet.WebConfig;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+/**
+ * The Class SpringServletContainer.
+ */
 public class SpringServletContainer extends ServletContainer
 {
+    
+    /** The Constant REST_APPLICATION. */
     protected static final String REST_APPLICATION = "javax.ws.rs.core.Application";
     
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -2747438268677470649L;
+    
+    /** {@inheritDoc} */
     
     @Override
     protected void init(WebConfig webConfig)
@@ -23,6 +31,11 @@ public class SpringServletContainer extends ServletContainer
         super.init(webConfig);
     }
     
+    /**
+     * Inits the resource config.
+     *
+     * @param webConfig the web config
+     */
     protected void initResourceConfig(WebConfig webConfig)
     {
         try
@@ -37,6 +50,12 @@ public class SpringServletContainer extends ServletContainer
         }
     }
     
+    /**
+     * Creates the resource config.
+     *
+     * @param webConfig the web config
+     * @return the resource config
+     */
     protected ResourceConfig createResourceConfig(WebConfig webConfig)
     {
         return WebApplicationContextUtils.getWebApplicationContext(webConfig.getServletContext())
