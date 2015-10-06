@@ -9,7 +9,9 @@ import com.github.zzycjcg.foundation.dao.BaseDao;
 /**
  * The Class BaseDaoImpl.
  *
+ * @author zhiyong zhu at 2015-10-6
  * @param <T> the generic type
+ * @since v0.0.1
  */
 public class BaseDaoImpl<T> implements BaseDao<T>
 {

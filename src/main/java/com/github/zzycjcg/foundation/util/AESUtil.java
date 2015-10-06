@@ -16,6 +16,9 @@ import org.apache.commons.codec.binary.Hex;
  * The Class AES. <br>
  * ref: http://my.oschina.net/nicsun/blog/95632 http://stackoverflow.com/questions/10193567/java-security-
  * nosuchalgorithmexception-cannot-find-any-provider-supporting-aes
+ *
+ * @author zhiyong zhu at 2015-10-6
+ * @since v0.0.1
  */
 public abstract class AESUtil
 {
@@ -29,6 +32,12 @@ public abstract class AESUtil
     /** The Constant KEY_ALGORITHM. */
     private static final String KEY_ALGORITHM = "AES";
     
+    /**
+     * Generate key.
+     *
+     * @return the byte[]
+     * @throws GeneralSecurityException the general security exception
+     */
     public static byte[] generateKey()
         throws GeneralSecurityException
     {
@@ -45,6 +54,13 @@ public abstract class AESUtil
         return secretKey;
     }
     
+    /**
+     * Encrypt.
+     *
+     * @param data the data
+     * @param key the key
+     * @return the string
+     */
     public static String encrypt(String data, byte[] key)
     {
         try
@@ -62,6 +78,13 @@ public abstract class AESUtil
         }
     }
     
+    /**
+     * Decrypt.
+     *
+     * @param data the data
+     * @param key the key
+     * @return the string
+     */
     public static String decrypt(String data, byte[] key)
     {
         try

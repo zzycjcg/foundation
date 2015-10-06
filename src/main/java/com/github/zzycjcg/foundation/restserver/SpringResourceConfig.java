@@ -7,10 +7,12 @@ import org.glassfish.jersey.server.ResourceConfig;
 
 /**
  * The Class SpringResourceConfig.
+ *
+ * @author zhiyong zhu at 2015-10-6
+ * @since v0.0.1
  */
 public class SpringResourceConfig extends ResourceConfig
 {
-    
     /**
      * Sets the beans.
      *

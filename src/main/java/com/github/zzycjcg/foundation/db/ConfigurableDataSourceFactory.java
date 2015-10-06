@@ -13,6 +13,9 @@ import com.github.zzycjcg.foundation.util.AESUtil;
 
 /**
  * A factory for creating ConfigurableDataSource objects.
+ * 
+ * @author zhiyong zhu at 2015-10-6
+ * @since v0.0.1
  */
 public class ConfigurableDataSourceFactory implements FactoryBean<DataSource>
 {

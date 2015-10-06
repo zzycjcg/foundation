@@ -7,10 +7,12 @@ import com.github.zzycjcg.foundation.util.AESUtil;
 
 /**
  * The Class AESTest.
+ *
+ * @author zhiyong zhu at 2015-10-6
+ * @since v0.0.1
  */
 public class AESTest
 {
-    
     /**
      * Encrtpt.
      */
