@@ -94,6 +94,13 @@
 					<include>NOTICE</include>
 				</includes>
 			</resource>
+			<resource>
+				<directory>${project.basedir}/src/main/resources</directory>
+				<targetPath>META-INF</targetPath>
+			</resource>
+			<resource>
+				<directory>${project.basedir}/src/test/resources</directory>
+			</resource>
 		</resources>
 	</build>
 
