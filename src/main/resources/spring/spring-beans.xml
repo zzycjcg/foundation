@@ -10,7 +10,13 @@
 
 	<bean id="foundation.db.DataSource"
 		class="com.github.zzycjcg.foundation.db.ConfigurableDataSourceFactory">
-		<property name="configLocation" value="jdbc.properties" />
+		<property name="dataSourceProperties" ref="foundation.db.dataSourceProperties" />
+	</bean>
+
+	<bean id="foundation.db.dataSourceProperties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="localOverride" value="true" />
+		<property name="location" value="classpath:jdbc.properties" />
 	</bean>
 
 	<bean id="foundation.dao.SqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
