@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 import org.glassfish.jersey.servlet.WebConfig;
+import org.springframework.beans.BeansException;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 /**
@@ -38,8 +39,10 @@ public class SpringServletContainer extends ServletContainer
      * Inits the resource config.
      *
      * @param webConfig the web config
+     * @throws ServletException the servlet exception
      */
     protected void initResourceConfig(WebConfig webConfig)
+        throws ServletException
     {
         try
         {
@@ -49,7 +52,11 @@ public class SpringServletContainer extends ServletContainer
         }
         catch (ReflectiveOperationException e)
         {
-            throw new RuntimeException("Failed to createResourceConfig.", e);
+            throw new ServletException("Failed to createResourceConfig.", e);
+        }
+        catch (BeansException e)
+        {
+            throw new ServletException("Failed to create bean.", e);
         }
     }
     
@@ -58,8 +65,10 @@ public class SpringServletContainer extends ServletContainer
      *
      * @param webConfig the web config
      * @return the resource config
+     * @throws BeansException the beans exception
      */
     protected ResourceConfig createResourceConfig(WebConfig webConfig)
+        throws BeansException
     {
         return WebApplicationContextUtils.getWebApplicationContext(webConfig.getServletContext())
             .getBean(webConfig.getServletConfig().getInitParameter(REST_APPLICATION), ResourceConfig.class);
