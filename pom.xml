@@ -89,23 +89,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<resources>
-			<resource>
-				<directory>${project.basedir}</directory>
-				<targetPath>META-INF</targetPath>
-				<includes>
-					<include>LICENSE</include>
-					<include>NOTICE</include>
-				</includes>
-			</resource>
-			<resource>
-				<directory>${project.basedir}/src/main/resources</directory>
-				<targetPath></targetPath>
-			</resource>
-			<resource>
-				<directory>${project.basedir}/src/test/resources</directory>
-			</resource>
-		</resources>
 	</build>
 
 	<profiles>
@@ -121,7 +104,7 @@
 							<execution>
 								<id>attach-sources</id>
 								<goals>
-									<goal>jar-no-fork</goal>
+									<goal>jar</goal>
 								</goals>
 							</execution>
 						</executions>
