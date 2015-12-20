@@ -9,7 +9,7 @@ import org.junit.Test;
  * @author zhiyong zhu at 2015-10-6
  * @since v0.0.1
  */
-public class AESTest
+public class AESUtilTest
 {
     /**
      * Encrtpt.
